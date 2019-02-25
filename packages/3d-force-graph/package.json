@@ -1,6 +1,6 @@
 {
   "name": "@petitatelier/d3-force-graph",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Defines the ‹d3-force-graph› element, a force directed graph, that layouts HTML and SVG as nodes",
   "author": "Yves Lange",
   "license": "BSD-3-Clause",
