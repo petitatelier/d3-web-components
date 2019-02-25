@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/d3/dist/d3.min.js"></script>
+  <title>Force Directed Graph - demo HTML</title>
+<style>
+body {
+  background-color: #333;
+  color: white;
+}
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+d3-force-graph {
+  height: 350px;
+  width: 500px;
+}
+.circle {
+  text-align: center;
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  cursor: pointer;
+  color: #333;
+  border: 1px dotted white;
+  border-radius: 25px;
+  box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);
+  padding: 1px;
+  opacity: 0.85;
+  box-shadow: 1px 1px 10px 1px rgba(255,255,255,0.3);
+}
+.circle[group="1"],
+.circle[group="2"] {
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+.circle[group="1"] {
+  background-color: #f44265;
+}
+.circle[group="2"] {
+  background-color: #c9f446;
+}
+.circle:hover {
+  background-color: white;
+  opacity: 1;
+}
+a,
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.youtube {
+  max-width: 200px;
+  padding: 10px;
+}
+line {
+  stroke: white;
+}
+input {
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #afafaf;
+  opacity: 0.95;
+  padding: 10px;
+  outline: none;
+}
+button {
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #afafaf;
+  opacity: 0.95;
+  padding: 10px;
+  outline: none;
+}
+</style>
+</head>
+<body>
+  <script type="module" src="../node_modules/@petitatelier/d3-force-graph/d3-force-graph.js"></script>
+
+  <!-- Render some node using SVG -->
+  <h2>D3 Force Directed Graph</h2>
+  <bold>Using D3.js and HTML elements</bold>
+  <p>Here is a small example to render a force directed graph using nodes in an HTML container</p>
+
+  <d3-force-graph
+    max-radius=40
+    link-offset-x=20
+    link-offset-y=20
+    charge-force=-100
+    force-x=0.01
+    force-y=0.01
+    collision-force=0.05
+  >
+    <div slot="nodes">
+      <div id="c1" group=1 class="circle" top=0 left=0>C1</div>
+      <div id="c2" group=1 class="circle">C2</div>
+      <div id="c3" group=1 class="circle">C3</div>
+      <div id="c4" group=2 class="circle">C4</div>
+      <div id="c5" group=2 class="circle">C5</div>
+      <div id="c6" group=2 class="circle">C6</div>
+      <h2 id="form">A form</h2>
+      <input id="input1" type="text" placeholder="this is an text input" group=1>
+      <a id="link1" href="">Refresh</a>
+      <button id="b1">Submit</button>
+      <img id="img1" group=3 src="https://petit-atelier.ch/images/petit-atelier-logo.svg" class="circle"></img>
+      <!-- <iframe class="box youtube" group=3 width="200" height="100"
+        src="https://www.youtube.com/embed/mPwIRnvt6q8" frameborder="0"
+        allow="accelerometer; autoplay; encrypted&#45;media; gyroscope; picture&#45;in&#45;picture" allowfullscreen></iframe> -->
+    </div>
+    <svg slot="links">
+      <line source="c1" target="c2"></line>
+      <line source="c1" target="c3"></line>
+      <line source="c5" target="c4"></line>
+      <line source="c5" target="c6"></line>
+      <line source="c5" target="c1"></line>
+      <line source="form" target="img1"></line>
+      <line target="input1" target-x-offset=60 target-y-offset=-22 source="form"></line>
+      <line source="input1" source-x-offset=60 source-y-offset=-22 target="b1"></line>
+      <line source="input1" source-x-offset=60 source-y-offset=-22 target="link1"></line>
+    </svg>
+
+  </d3-force-graph>
+  <script>
+    var button = document.getElementById("b1");
+    var text = document.getElementById("input1");
+    button.addEventListener("click", (e) => {
+      if(text.value) {
+        alert(text.value);
+      } else {
+        alert("Please enter some text in the input box (if you can catch it)");
+      }
+    });
+  </script>
+</html>

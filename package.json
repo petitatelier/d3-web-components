@@ -1,8 +1,8 @@
 {
-  "name": "@my-org/my-collection-of-web-components",
+  "name": "@petitatelier/3d-web-components",
   "private": true,
-  "description": "My collection of Web Components",
-  "author": "",
+  "description": "My collection of D3 Web Components",
+  "author": "Yves Lange",
   "license": "BSD-3-Clause",
   "scripts": {
     "bootstrap": "npm install && ./scripts/bootstrap.sh",
@@ -17,6 +17,6 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olange/webcomponents-starter.git"
+    "url": "git+https://github.com/petitatelier/d3-web-components.git"
   }
 }

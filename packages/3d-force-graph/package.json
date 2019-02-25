@@ -1,0 +1,29 @@
+{
+  "name": "@petitatelier/d3-force-graph",
+  "version": "0.0.1",
+  "description": "Defines the ‹d3-force-graph› element, a force directed graph, that layouts HTML and SVG as nodes",
+  "author": "Yves Lange",
+  "license": "BSD-3-Clause",
+  "main": "d3-force-graph.js",
+  "scripts": {},
+  "dependencies": {
+    "d3": "^5.9.1",
+    "lit-element": "^2.0.1"
+  },
+  "keywords": [
+    "d3.js",
+    "webcomponent",
+    "force directed graph"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petitatelier/d3-web-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/petitatelier/d3-web-components/issues"
+  },
+  "homepage": "https://github.com/petitatelier/d3-web-components/tree/master/packages/d3-force-graph#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

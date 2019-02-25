@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/d3/dist/d3.min.js"></script>
+  <title>Force Directed Graph - demo SVG</title>
+<style>
+body {
+  background-color: #333;
+  color: white;
+}
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+d3-force-graph {
+  height: 250px;
+  width: 500px;
+}
+circle {
+  cursor: pointer;
+  stroke-width: 1px;
+  fill: white;
+  opacity: 0.75;
+}
+circle[group="1"] {
+  stroke: #a8e7ff;
+  fill: #7c92ff;
+}
+circle[group="2"] {
+  stroke: #f0bdf9;
+  fill: #e78ff7;
+}
+circle:hover {
+  stroke-width: 2;
+  opacity: 0.9;
+}
+</style>
+</head>
+<body>
+  <script type="module" src="../node_modules/@petitatelier/d3-force-graph/d3-force-graph.js"></script>
+
+  <!-- Render some node using SVG -->
+  <h2>D3 Force Directed Graph</h2>
+  <bold>Using D3.js and SVG elements</bold>
+  <p>Here is a small example to render a force directed graph using nodes in an SVG container</p>
+  <d3-force-graph
+    collision-force=0.05
+    charge-force=-50
+    link-stroke="#c4e8fc"
+    link-stroke-width=1
+  >
+    <svg id="myNodes" slot="nodes">
+      <circle id="main" group=1 r=50 fill="red"></circle>
+      <circle id="c1" group=1 r=20></circle>
+      <circle id="c2" group=1 r=20></circle>
+      <circle id="c3" group=1 r=20></circle>
+      <circle id="c4" group=1 r=20></circle>
+      <circle id="second" group=2 r=40></circle>
+      <circle id="c5" group=2 r=20></circle>
+      <circle id="c6" group=2 r=20></circle>
+    </svg>
+    <svg id="myLinks" slot="links">
+      <line source="main" target="c1"></line>
+      <line source="main" target="c2"></line>
+      <line source="main" target="c3"></line>
+      <line source="main" target="c4"></line>
+      <line source="second" target="c5" stroke="white" stroke-width=0.5></line>
+      <line source="second" target="c6" stroke="white" stroke-width=0.5></line>
+    </svg>
+  </d3-force-graph>
+  <script>
+
+    // A function to dynamically add a node in the SVG
+    var addNode = function(id="newNode", r=20, group=1, cx=0, cy=0) {
+      var nodesSlot = document.getElementById("myNodes");
+      var newNode = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      newNode.setAttribute("id", id);
+      newNode.setAttribute("r", r);
+      newNode.setAttribute("group", group);
+      newNode.setAttribute("cx", cx);
+      newNode.setAttribute("cy", cy);
+      nodesSlot.append(newNode);
+      var fdc = document.querySelector("d3-force-graph");
+      fdc.reset();
+    }
+
+    var addLink = function(id="newLink", source, target, stroke="white", strokeWidth=0.5) {
+      var linksSlot = document.getElementById("myLinks");
+      var newLink = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      newLink.setAttribute("id", id);
+      newLink.setAttribute("source", source);
+      newLink.setAttribute("target", target);
+      newLink.setAttribute("stroke", stroke);
+      newLink.setAttribute("stroke-width", strokeWidth);
+      linksSlot.append(newLink);
+      var fdc = document.querySelector("d3-force-graph");
+      fdc.reset();
+    }
+
+    setTimeout( () => {
+      addNode("newNode", 20, 3, 300, 200)
+      addNode("newNode1", 20, 3, 300, 200)
+      addNode("newNode2", 20, 3, 300, 200)
+      addLink("newLink", "newNode", "newNode1")
+      addLink("newLink", "newNode", "newNode2")
+    }, 3000);
+
+  </script>
+</html>
