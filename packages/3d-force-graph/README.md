@@ -1,6 +1,6 @@
 # D3-force-graph Component
 
-![example of force directed graph](../../demos/assets/screenshots/20190222-ylange-d3-force-graphs.jpg)
+![example of force directed graph](https://github.com/petitatelier/d3-web-components/raw/master/demos/assets/screenshots/20190222-ylange-d3-force-graphs.jpg)
 
 An experiment around force directed graphs inspired by 
 *[Disjoint Force-Directed Graph](https://beta.observablehq.com/@mbostock/disjoint-force-directed-graph)*
