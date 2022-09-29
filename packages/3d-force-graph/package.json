@@ -7,7 +7,7 @@
   "main": "d3-force-graph.js",
   "scripts": {},
   "dependencies": {
-    "d3": "^5.9.1",
+    "d3": "^7.6.1",
     "lit-element": "^2.0.1"
   },
   "keywords": [
